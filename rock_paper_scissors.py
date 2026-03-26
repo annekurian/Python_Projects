@@ -8,9 +8,9 @@
 
 import random
 
-choices=['r','p','s']
+choices=('r','p','s') # using a tuple so that it is read only and it is not accidentally modified
 while True:
-    user_choice = (input("Rock, paper, or scissors? (r/p/s): ")).lower()
+    user_choice = input("Rock, paper, or scissors? (r/p/s): ").lower()
     if user_choice in choices:
         computer_choice = random.choice(choices)
         print(f"You chose {user_choice}")
@@ -24,7 +24,7 @@ while True:
     else:
         print("Invalid choice!")
 
-    is_continue = (input("Continue? (y/n): ")).lower()
+    is_continue = input("Continue? (y/n): ").lower()
     if not is_continue == "n" and not is_continue == "y":
         print("Invalid choice!")
         break
