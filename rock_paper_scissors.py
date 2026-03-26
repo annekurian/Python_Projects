@@ -8,8 +8,12 @@
 
 import random
 
-choices=('r','p','s') # using a tuple so that it is read only and it is not accidentally modified
-emojis = {'r':'🪨', 'p':'📄', 's':'✂️'}
+ROCK = 'r'
+PAPER = 'p'
+SCISSORS = 's'
+emojis = {ROCK:'🪨', PAPER:'📄', SCISSORS:'✂️'}
+# using a tuple so that it is read only and it is not accidentally modified
+choices = tuple(emojis.keys())
 
 def get_user_choice():
     while True:
@@ -26,7 +30,7 @@ def display_choices(user_choice, computer_choice):
 def determine_winner(user_choice, computer_choice):
     if user_choice == computer_choice:
         print("It is a draw")
-    elif (user_choice, computer_choice) in [('r','s'), ('p','r'), ('s','p')]:
+    elif (user_choice, computer_choice) in [(ROCK,SCISSORS), (PAPER,ROCK), (SCISSORS,PAPER)]:
         print("You won")
     else:
         print("You lose")
@@ -42,7 +46,7 @@ def play_game():
         determine_winner(user_choice, computer_choice)
 
         is_continue = input("Continue? (y/n): ").lower()
-        if not is_continue == "n" and not is_continue == "y":
+        if is_continue not in ('y','n'):
             print("Invalid choice!")
             break
         elif is_continue == "n":
